@@ -14,4 +14,7 @@ class Calculadora {
         return s1-s2;
     }
 
+    public int divide(int i, int i1) {
+        return i/i1;
+    }
 }
