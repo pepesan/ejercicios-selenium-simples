@@ -1,5 +1,5 @@
 Feature: Prueba de Día
-  Descipción de Pruebas
+  Descripción de Pruebas
 
   Scenario: ¿Que dia es?
     Given hoy es Lunes

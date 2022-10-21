@@ -5,3 +5,4 @@ Feature: Navegación
     Given Abro la pagina
     When busco "Software"
     Then Encuentro el texto "Computer software"
+    And Cierro Navegador

@@ -1,5 +1,6 @@
 package com.cursosdedesarrollo.app.cucumber;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -32,6 +33,10 @@ public class MyNavigationStepdefs {
     public void meto_el_valor(String expectedText) {
         textToBePresentInElementLocated(By.tagName("body"),
                 expectedText);
+    }
+    @And("Cierro Navegador")
+    public void cierro_navegador(){
+        driver.close();
     }
 
 }

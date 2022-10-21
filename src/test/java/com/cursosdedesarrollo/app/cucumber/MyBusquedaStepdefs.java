@@ -1,5 +1,6 @@
 package com.cursosdedesarrollo.app.cucumber;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -51,6 +52,10 @@ public class MyBusquedaStepdefs {
         // 8 | assertText | css=h1 | Search results for: docker
 
         assertEquals("Search results for: docker",driver.findElement(By.cssSelector("h1")).getText());
+    }
+    @And("Cierro este Navegador")
+    public void cierro_navegador(){
+        driver.close();
     }
 
 }
