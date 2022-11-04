@@ -2,7 +2,7 @@
 
 ## lanzamiento mvn test
 mvn test
-mvn -Dtest=example.SimpleTest test
+mvn -Dtest=com.cursosdedesarrollo.app.CalculadoraTest test
 ### ejecución de tag integracion
 mvn test -Dgroups="integracion"
 ### ejecución de tag varios tag

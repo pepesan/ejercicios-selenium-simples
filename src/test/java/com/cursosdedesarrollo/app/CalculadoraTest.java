@@ -2,12 +2,14 @@ package com.cursosdedesarrollo.app;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 /**
  * Unit test for simple App.
  */
 
+@Tag("unit")
 class CalculadoraTest {
     @Test
     @DisplayName("add(1,1) = 2")

@@ -21,7 +21,7 @@ public class ApiRestTest {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
-                .uri(URI.create("http://jsonplaceholder.typicode.com/posts/1"))
+                .uri(URI.create("https://jsonplaceholder.typicode.com/posts/1"))
                 .headers("Accept-Enconding", "gzip, deflate")
                 .build();
         // When
@@ -62,7 +62,7 @@ public class ApiRestTest {
         JSONObject obj = new JSONObject();
         obj.put("name", "Pankaj Kumar");
         obj.put("age", Integer.valueOf(32));
-        HttpRequest request = HttpRequest.newBuilder(new URI("http://httpbin.org/post"))
+        HttpRequest request = HttpRequest.newBuilder(new URI("https://httpbin.org/post"))
                 .version(HttpClient.Version.HTTP_2)
                 .POST(HttpRequest.BodyPublishers.ofString(obj.toJSONString()))
                 .build();
