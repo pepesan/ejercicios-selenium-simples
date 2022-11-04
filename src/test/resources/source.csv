@@ -1,0 +1,5 @@
+input1,input2,expectedvalue
+0, 1, 1
+1, 2, 3
+49, 51, 100
+1, 100, 101

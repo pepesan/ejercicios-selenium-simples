@@ -36,6 +36,14 @@ public class ParametrizadasTest {
         String actualValue = input.toUpperCase();
         assertEquals(expected, actualValue);
     }
+
+    @ParameterizedTest(name = "{0} + {1} = {2}")
+    @CsvFileSource(resources = "/source.csv", numLinesToSkip = 1)
+    void addFromFile(int first, int second, int expectedResult) {
+        Calculadora c = new Calculadora();
+        assertEquals(expectedResult, c.add(first, second),
+                () -> first + " + " + second + " should equal " + expectedResult);
+    }
     
     @RepeatedTest(10)
     void repeatedTest() {
