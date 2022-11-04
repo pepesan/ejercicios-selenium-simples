@@ -15,8 +15,9 @@ import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")
+//@SelectClasspathResource("src/test/resources/features")
 @Tag("aceptance")
-//@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.cursosdedesarrollo.app")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.cursosdedesarrollo.app")
 //@ConfigurationParameter(key = Constants.PLUGIN_PUBLISH_QUIET_PROPERTY_NAME, value = "true")
 //@ConfigurationParameter(key = Constants.FILTER_TAGS_PROPERTY_NAME, value = "@cursos or @busqueda")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/cucumber-report/cucumber.html")
