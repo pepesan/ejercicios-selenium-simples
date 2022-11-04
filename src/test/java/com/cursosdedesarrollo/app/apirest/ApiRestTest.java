@@ -15,6 +15,52 @@ import java.net.http.HttpResponse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ApiRestTest {
+
+    @Test
+    public void testGetHttpBinOrg() throws IOException, InterruptedException {
+        // Given
+        // configurar el cliente Web que haga la petición
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .uri(URI.create("https://httpbin.org/get"))
+                .build();
+        // When
+        // realizar la petición
+        HttpResponse<String> response = client.send(
+                request,
+                HttpResponse.BodyHandlers.ofString());
+        // Then
+        // comprobar que la respuesta a nuestra petición es correcta
+        int responseStatusCode = response.statusCode();
+        assertEquals(
+                200,
+                responseStatusCode,
+                "El código a devolver debería ser 200");
+    }
+
+    @Test
+    public void testCursosDeDesarrollo() throws IOException, InterruptedException {
+        // Given
+        // configurar el cliente Web que haga la petición
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .uri(URI.create("https://cursosdedesarrollo.com/pactometro/resultados.json"))
+                .build();
+        // When
+        // realizar la petición
+        HttpResponse<String> response = client.send(
+                request,
+                HttpResponse.BodyHandlers.ofString());
+        // Then
+        // comprobar que la respuesta a nuestra petición es correcta
+        int responseStatusCode = response.statusCode();
+        assertEquals(
+                200,
+                responseStatusCode,
+                "El código a devolver debería ser 200");
+    }
     @Test
     public void testGetRequest() throws IOException, InterruptedException, ParseException {
         // Given

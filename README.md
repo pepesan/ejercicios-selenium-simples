@@ -8,6 +8,8 @@ mvn test -Dtest=com.cursosdedesarrollo.app.cucumber.RunCucumberTest
 
 ### ejecución de tags en cucumber
 mvn test -Dtest=com.cursosdedesarrollo.app.cucumber.RunCucumberTest -Dgroups="cursos | @busqueda"
+### ejecución de un tag
+mvn test -Dgroups="smoke"
 ### ejecución de tag varios tag
 mvn test -Dgroups="integracion | aceptacion"
 ## no ejecutes este tag api

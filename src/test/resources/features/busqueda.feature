@@ -4,6 +4,7 @@ Feature: Navegación
   @busqueda
   @cursos
   @smoke
+  @aceptacion
   Scenario: Navegando por la web
     Given Abro la pagina a buscar
     When busco  poniendo "docker"
