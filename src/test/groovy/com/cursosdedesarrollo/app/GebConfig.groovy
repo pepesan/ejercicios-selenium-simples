@@ -29,4 +29,4 @@ driver = {
     new ChromeDriver(serviceBuilder.build())
 }
 
-baseUrl = "http://gebish.org"
+baseUrl = "https://duckduckgo.com"

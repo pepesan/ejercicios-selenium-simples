@@ -11,6 +11,6 @@ class MyBaseTest extends GebSpec {
         $("#search_button_homepage").click()
 
         then: "the first result (excluding ads) is the geb website"
-        $("#links").$(".nrn-react-div a", 0).attr("href") == "http://www.gebish.org/"
+        $("#links").$(".nrn-react-div a", 0).attr("href") == "https://duckduckgo.com/?q=Groovy%20Browser%20Automation+site:gebish.org&t=h_"
     }
 }
