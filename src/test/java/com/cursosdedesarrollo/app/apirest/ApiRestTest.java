@@ -1,5 +1,6 @@
 package com.cursosdedesarrollo.app.apirest;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -108,7 +109,7 @@ public class ApiRestTest {
         System.out.println(origin);
     }
     @Test
-    public void testGetHttpBinOrgEitjJSON() throws IOException, InterruptedException, ParseException {
+    public void testGetHttpBinOrgWithJSON() throws IOException, InterruptedException, ParseException {
         // Given
         // configurar el cliente Web que haga la petición
         HttpClient client = HttpClient.newHttpClient();
@@ -186,7 +187,7 @@ public class ApiRestTest {
         assertNotNull(userAgent, "El user Agent no puede ser null");
     }
     @Test
-    public void testCursosDeDesarrollo() throws IOException, InterruptedException {
+    public void testCursosDeDesarrolloPactometro() throws IOException, InterruptedException {
         // Given
         // configurar el cliente Web que haga la petición
         HttpClient client = HttpClient.newHttpClient();
@@ -206,6 +207,45 @@ public class ApiRestTest {
                 200,
                 responseStatusCode,
                 "El código a devolver debería ser 200");
+    }
+
+    @Test
+    public void testCursosDeDesarrolloPactometroWithJson() throws IOException, InterruptedException, ParseException {
+        // Given
+        // configurar el cliente Web que haga la petición
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .uri(URI.create("https://cursosdedesarrollo.com/pactometro/resultados.json"))
+                .build();
+        // When
+        // realizar la petición
+        HttpResponse<String> response = client.send(
+                request,
+                HttpResponse.BodyHandlers.ofString());
+        // Then
+        // comprobar que la respuesta a nuestra petición es correcta
+        int responseStatusCode = response.statusCode();
+        assertEquals(
+                200,
+                responseStatusCode,
+                "El código a devolver debería ser 200");
+        // Recogemos los datos del body
+        String body = response.body();
+        // Parseamos los datos
+        JSONParser jsonParser = new JSONParser();
+        JSONArray array = (JSONArray) jsonParser.parse(body);
+        // System.out.println(array);
+        JSONObject partido = (JSONObject) array.get(0);
+        String nombre = partido.get("nombre").toString();
+        assertEquals("PP", nombre,
+                "El nombre del primer partido del array debe ser PP");
+        String dipu = partido.get("dipu").toString();
+        assertEquals("89", dipu,
+                "El número de diputados del primer partido del array debe ser 89");
+        String imagen = partido.get("imagen").toString();
+        assertEquals("logotipo-pp.png", imagen,
+                "la imagen del primer partido del array debe ser logotipo-pp.png");
     }
     @Test
     public void testGetRequest() throws IOException, InterruptedException, ParseException {
