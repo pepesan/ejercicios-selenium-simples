@@ -68,7 +68,123 @@ public class ApiRestTest {
         HttpHeaders httpHeaders = response.headers();
         assertEquals("application/json", httpHeaders.firstValue("content-type").get());
     }
+    @Test
+    public void testGetHttpBinOrgIPWithJson()
+            throws IOException, InterruptedException, ParseException {
+        // Given
+        // configurar el cliente Web que haga la petición
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .uri(URI.create("https://httpbin.org/ip"))
+                .build();
+        // When
+        // realizar la petición
+        HttpResponse<String> response = client.send(
+                request,
+                HttpResponse.BodyHandlers.ofString());
+        // Then
+        // comprobar que la respuesta a nuestra petición es correcta
+        // Status code
+        int responseStatusCode = response.statusCode();
+        assertEquals(
+                200,
+                responseStatusCode,
+                "El código a devolver debería ser 200");
+        // Datos de la caebecera
+        HttpHeaders httpHeaders = response.headers();
+        assertEquals("application/json", httpHeaders.firstValue("content-type").get());
+        // Datos del body
+        String responseBody = response.body();
+        System.out.println(responseBody);
+        assertNotNull(responseBody, "El valor debe ser diferente a null");
+        // Transformamos la string a un objeto Java JSON
+        JSONParser parser = new JSONParser();
+        JSONObject jsonObject = (JSONObject) parser.parse(responseBody);
+        // obtenemos el valor de un atributo deel objeto JSON
+        String origin = jsonObject.get("origin").toString();
+        // verificamos su contenido
+        assertNotNull(origin, "El origen debe ser diferente a null");
+        System.out.println(origin);
+    }
+    @Test
+    public void testGetHttpBinOrgEitjJSON() throws IOException, InterruptedException, ParseException {
+        // Given
+        // configurar el cliente Web que haga la petición
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .uri(URI.create("https://httpbin.org/get"))
+                .build();
+        // When
+        // realizar la petición
+        HttpResponse<String> response = client.send(
+                request,
+                HttpResponse.BodyHandlers.ofString());
+        // Then
+        // comprobar que la respuesta a nuestra petición es correcta
+        int responseStatusCode = response.statusCode();
+        assertEquals(
+                200,
+                responseStatusCode,
+                "El código a devolver debería ser 200");
+        // Extraemos el body de la respuesta
+        String body = response.body();
+        // Parsear el contenido del body
+        JSONParser jsonParser = new JSONParser();
+        JSONObject json = (JSONObject) jsonParser.parse(body);
+        // Obtener los datos de los atributos que están dentro del JSON
+        String url = json.get("url").toString();
+        // Comprobamos que el es el contenido esperado
+        assertEquals(
+                "https://httpbin.org/get",
+                url,
+                "La url debe coincidir con el valor esperado");
+        String origin = json.get("origin").toString();
+        // Comprobamos que el es el contenido esperado
+        assertNotNull(
+                origin,
+                "El origen no puede ser null");
+    }
 
+    // GET https://httpbin.org/headers
+    @Test
+    public void testGetHttpBinOrgHeaders()
+            throws IOException, InterruptedException, ParseException {
+        // Given
+        // configurar el cliente Web que haga la petición
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .uri(URI.create("https://httpbin.org/headers"))
+                .build();
+        // When
+        // realizar la petición
+        HttpResponse<String> response = client.send(
+                request,
+                HttpResponse.BodyHandlers.ofString());
+        // Then
+        // comprobar que la respuesta a nuestra petición es correcta
+        int responseStatusCode = response.statusCode();
+        assertEquals(
+                200,
+                responseStatusCode,
+                "El código a devolver debería ser 200");
+        String body = response.body();
+        //System.out.println(body);
+        assertNotNull(body, "El body no puede ser null");
+        // Parseamos el contenido del body
+        JSONParser jsonParser = new JSONParser();
+        JSONObject json = (JSONObject) jsonParser.parse(body);
+        // Extraemos el atributo headers
+        JSONObject headers = (JSONObject) json.get("headers");
+        // extraemos el atributo Host de headers
+        String host = headers.get("Host").toString();
+        assertEquals("httpbin.org", host, "El host debería tener el nombre del host");
+        // extraemos el atributo User-Agent de headers
+        String userAgent = headers.get("User-Agent").toString();
+        assertNotNull(userAgent, "El user Agent no puede ser null");
+    }
     @Test
     public void testCursosDeDesarrollo() throws IOException, InterruptedException {
         // Given
