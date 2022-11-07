@@ -419,4 +419,26 @@ public class ApiRestTest {
         // System.out.println(idValue);
         assertEquals(101, idValue);
     }
+    @Test
+    public void testDeleteHttpBinOrg() throws IOException, InterruptedException, URISyntaxException {
+        // Given
+        // configurar el cliente Web que haga la petición
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder(new URI("https://httpbin.org/delete"))
+                .version(HttpClient.Version.HTTP_2)
+                .method("DELETE",HttpRequest.BodyPublishers.ofString(""))
+                .build();
+        // When
+        // realizar la petición
+        HttpResponse<String> response = client.send(
+                request,
+                HttpResponse.BodyHandlers.ofString());
+        // Then
+        // comprobar que la respuesta a nuestra petición es correcta
+        int responseStatusCode = response.statusCode();
+        assertEquals(
+                200,
+                responseStatusCode,
+                "El código a devolver debería ser 200");
+    }
 }
