@@ -330,7 +330,8 @@ public class ApiRestTest {
         JSONObject obj = new JSONObject();
         obj.put("name", "David Vaquero");
         obj.put("age", 44);
-        HttpRequest request = HttpRequest.newBuilder(new URI("https://httpbin.org/post"))
+        HttpRequest request = HttpRequest
+                .newBuilder(new URI("https://httpbin.org/post"))
                 .version(HttpClient.Version.HTTP_2)
                 .POST(HttpRequest.BodyPublishers.ofString(obj.toJSONString()))
                 .build();
@@ -338,7 +339,7 @@ public class ApiRestTest {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         int responseStatusCode = response.statusCode();
         String reponseBody = response.body();
-        // System.out.println("httpGetRequest: " + reponseBody);
+        System.out.println("httpGetRequest: " + reponseBody);
         // Then
         assertEquals(
                 200,
@@ -350,6 +351,7 @@ public class ApiRestTest {
         JSONObject json = (JSONObject) jsonObject.get("json");
 
         assertEquals("David Vaquero",json.get("name"));
+        assertEquals(44L,json.get("age"));
     }
     @Test
     public void testPutRequest() throws IOException, InterruptedException, URISyntaxException, ParseException {
@@ -380,5 +382,6 @@ public class ApiRestTest {
         JSONObject json = (JSONObject) jsonObject.get("json");
 
         assertEquals("David Vaquero",json.get("name"));
+        assertEquals(44L,json.get("age"));
     }
 }
