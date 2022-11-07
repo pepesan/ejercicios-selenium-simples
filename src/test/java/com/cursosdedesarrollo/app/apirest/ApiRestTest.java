@@ -100,8 +100,10 @@ public class ApiRestTest {
         JSONObject args = (JSONObject) jsonObject.get("args");
         String param1 = (String )args.get("param1");
         System.out.println("param1: "+ param1);
+        assertEquals("hola", param1);
         String param2 = (String )args.get("param2");
         System.out.println("param2: "+ param2);
+        assertEquals("23", param2);
     }
     @Test
     public void testGetHttpBinOrgIPWithJson()
