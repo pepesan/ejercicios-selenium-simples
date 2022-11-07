@@ -64,7 +64,7 @@ public class ApiRestTest {
                 responseStatusCode,
                 "El código a devolver debería ser 200");
         String responseBody = response.body();
-        System.out.println(responseBody);
+        // System.out.println(responseBody);
         assertNotNull(responseBody, "El valor debe ser diferente a null");
         HttpHeaders httpHeaders = response.headers();
         assertEquals("application/json", httpHeaders.firstValue("content-type").get());
@@ -92,17 +92,17 @@ public class ApiRestTest {
                 "El código a devolver debería ser 200");
         // Datos del body
         String responseBody = response.body();
-        System.out.println(responseBody);
+        // System.out.println(responseBody);
         assertNotNull(responseBody, "El valor debe ser diferente a null");
         // Transformamos la string a un objeto Java JSON
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = (JSONObject) parser.parse(responseBody);
         JSONObject args = (JSONObject) jsonObject.get("args");
         String param1 = (String )args.get("param1");
-        System.out.println("param1: "+ param1);
+        // System.out.println("param1: "+ param1);
         assertEquals("hola", param1);
         String param2 = (String )args.get("param2");
-        System.out.println("param2: "+ param2);
+        //System.out.println("param2: "+ param2);
         assertEquals("23", param2);
     }
     @Test
@@ -271,6 +271,8 @@ public class ApiRestTest {
         // Parseamos los datos
         JSONParser jsonParser = new JSONParser();
         JSONArray array = (JSONArray) jsonParser.parse(body);
+        // System.out.println("tamaño: "+ array.size());
+        assertEquals(16, array.size());
         // System.out.println(array);
         JSONObject partido = (JSONObject) array.get(0);
         String nombre = partido.get("nombre").toString();
@@ -339,7 +341,7 @@ public class ApiRestTest {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         int responseStatusCode = response.statusCode();
         String reponseBody = response.body();
-        System.out.println("httpGetRequest: " + reponseBody);
+        // System.out.println("httpGetRequest: " + reponseBody);
         // Then
         assertEquals(
                 200,
@@ -383,5 +385,38 @@ public class ApiRestTest {
 
         assertEquals("David Vaquero",json.get("name"));
         assertEquals(44L,json.get("age"));
+    }
+    @Test
+    public void testTypiCodePostRequest() throws IOException, InterruptedException, URISyntaxException, ParseException {
+        // Given
+        HttpClient client = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .build();
+        JSONObject obj = new JSONObject();
+        obj.put("title", "El color de la magia");
+        obj.put("body", "Terry Pratchett");
+        obj.put("userId", 1);
+        HttpRequest request = HttpRequest
+                .newBuilder(new URI("https://jsonplaceholder.typicode.com/posts"))
+                .version(HttpClient.Version.HTTP_2)
+                .POST(HttpRequest.BodyPublishers.ofString(obj.toJSONString()))
+                .build();
+        // When
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        int responseStatusCode = response.statusCode();
+        String reponseBody = response.body();
+        // System.out.println("httpGetRequest: " + reponseBody);
+        // Then
+        assertEquals(
+                201,
+                responseStatusCode);
+        String responseBody = response.body();
+        // System.out.println("reponseBody: " + responseBody);
+
+        JSONParser parser = new JSONParser();
+        JSONObject jsonObject = (JSONObject) parser.parse(responseBody);
+        Long idValue = (Long) jsonObject.get("id");
+        // System.out.println(idValue);
+        assertEquals(101, idValue);
     }
 }
