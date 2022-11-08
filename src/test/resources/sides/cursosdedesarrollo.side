@@ -1,0 +1,106 @@
+{
+  "id": "73236e6e-f8b7-471e-8e98-63e0a9274f2c",
+  "version": "2.0",
+  "name": "cursosdedesarrollo",
+  "url": "https://cursosdedesarrollo.com",
+  "tests": [{
+    "id": "5071c7b4-b5eb-4ed6-8569-0dcd5d4da1cd",
+    "name": "nevegacion-compleja",
+    "commands": [{
+      "id": "58b45b74-baac-4c10-b9db-a3db53e5eca3",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "84f64992-21b7-4b3a-83ec-70196b1439ba",
+      "comment": "",
+      "command": "click",
+      "target": "css=.size-70 > .g-content",
+      "targets": [
+        ["css=.size-70 > .g-content", "css:finder"],
+        ["xpath=//main[@id='g-main']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//main/div/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dd263935-9302-49d5-9ddb-fced7297dd71",
+      "comment": "",
+      "command": "click",
+      "target": "id=wp-block-search__input-1",
+      "targets": [
+        ["id=wp-block-search__input-1", "id"],
+        ["name=s", "name"],
+        ["css=#wp-block-search__input-1", "css:finder"],
+        ["xpath=//input[@id='wp-block-search__input-1']", "xpath:attributes"],
+        ["xpath=//div[@id='block-5']/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "19eb6b9e-428d-4ece-a4c5-779ca61fe69e",
+      "comment": "",
+      "command": "type",
+      "target": "id=wp-block-search__input-1",
+      "targets": [
+        ["id=wp-block-search__input-1", "id"],
+        ["name=s", "name"],
+        ["css=#wp-block-search__input-1", "css:finder"],
+        ["xpath=//input[@id='wp-block-search__input-1']", "xpath:attributes"],
+        ["xpath=//div[@id='block-5']/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "docker"
+    }, {
+      "id": "501c3a3d-3968-4ef7-8f43-75d280e5851e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.wp-block-search__button",
+      "targets": [
+        ["css=.wp-block-search__button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='block-5']/form/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Buscar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "15173680-8d9d-4d2d-b3da-30be393c2343",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [],
+      "value": "Search results for: docker"
+    }, {
+      "id": "18c4d63c-ecda-47a6-bd68-2250c8109a11",
+      "comment": "",
+      "command": "open",
+      "target": "/sorteo-pycones-2021/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0dc9ddfa-632c-4879-ab76-a8b590a3cb25",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.entry-title",
+      "targets": [
+        ["css=.entry-title", "css:finder"],
+        ["xpath=//article[@id='post-7793']/section/h2", "xpath:idRelative"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Sorteo PyConEs 2021')]", "xpath:innerText"]
+      ],
+      "value": "Sorteo PyConEs 2021"
+    }]
+  }],
+  "suites": [{
+    "id": "738ad22f-0cf7-4450-b95e-557d9d7f5f0d",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["5071c7b4-b5eb-4ed6-8569-0dcd5d4da1cd"]
+  }],
+  "urls": ["https://cursosdedesarrollo.com/"],
+  "plugins": []
+}
