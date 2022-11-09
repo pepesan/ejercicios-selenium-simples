@@ -64,9 +64,34 @@ public class PactometroCargaInicialTest {
     elemento = driver.findElement(By.cssSelector("#part-PP > img"));
     // Elemento dentro de otro elemento img dentro de elemento por su ID
     elemento = driver.findElement(By.cssSelector("#part-PP > h2"));
-    System.out.println(elemento.getText());
+    // System.out.println(elemento.getText());
     assertEquals("89", elemento.getText());
+    elemento = driver.findElement(By.id("part-PP"));
+    // System.out.println(elemento.getAttribute("data-dipu"));
+    assertEquals("89", elemento.getAttribute("data-dipu"));
+    // System.out.println(elemento.getAttribute("data-nombre"));
+    assertEquals("PP", elemento.getAttribute("data-nombre"));
+    // System.out.println(elemento.getAttribute("data-img"));
+    assertEquals("logotipo-pp.png", elemento.getAttribute("data-img"));
+    System.out.println("class: " + elemento.getAttribute("class"));
+    assertEquals("boton-partido", elemento.getAttribute("class"));
+    System.out.println("style: " + elemento.getAttribute("style"));
+    assertEquals("", elemento.getAttribute("style"));
 
+    List<WebElement> listadoElementos = driver
+            .findElements(By.cssSelector("#partidos button"));
+    assertEquals(16, listadoElementos.size());
+    elemento = listadoElementos.get(0);
+    System.out.println(elemento.getTagName());
+    System.out.println(elemento.getAttribute("class"));
+    listadoElementos = driver.findElements(By.cssSelector(".boton-partido"));
+    System.out.println(listadoElementos.size());
+    listadoElementos = driver.findElements(By.cssSelector(".boton-partido h2"));
+    System.out.println(listadoElementos.size());
+    listadoElementos = driver.findElements(By.className("boton-partido"));
+    System.out.println(listadoElementos.size());
+    listadoElementos = driver.findElements(By.tagName("button"));
+    System.out.println(listadoElementos.size());
     {
       List<WebElement> elements = driver.findElements(By.cssSelector("#part-PP > img"));
       assert(elements.size() > 0);
