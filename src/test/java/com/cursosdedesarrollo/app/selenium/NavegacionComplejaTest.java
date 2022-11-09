@@ -29,6 +29,8 @@ public class NavegacionComplejaTest {
   JavascriptExecutor js;
   @BeforeEach
   public void setUp() {
+    // para windows
+    //System.setProperty("webdriver.chrome.driver","c:\\Users\\ruta\\chromedriver.exe");
     driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
