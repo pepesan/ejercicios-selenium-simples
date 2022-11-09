@@ -56,6 +56,17 @@ public class PactometroCargaInicialTest {
             //.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#part-PP > img")));
             // Espera a un elemento presente
             .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#part-PP > img")));
+    // Elemento cuyo ID es "part-PP"
+    elemento = driver.findElement(By.id("part-PP"));
+    // Elemento cuyo ID es "part-PP"
+    elemento = driver.findElement(By.cssSelector("#part-PP"));
+    // Elemento dentro de otro elemento img dentro de elemento por su ID
+    elemento = driver.findElement(By.cssSelector("#part-PP > img"));
+    // Elemento dentro de otro elemento img dentro de elemento por su ID
+    elemento = driver.findElement(By.cssSelector("#part-PP > h2"));
+    System.out.println(elemento.getText());
+    assertEquals("89", elemento.getText());
+
     {
       List<WebElement> elements = driver.findElements(By.cssSelector("#part-PP > img"));
       assert(elements.size() > 0);
