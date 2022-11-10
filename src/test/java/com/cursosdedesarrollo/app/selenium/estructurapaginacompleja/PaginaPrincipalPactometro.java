@@ -1,14 +1,8 @@
-package com.cursosdedesarrollo.app.selenium.estructurapagina;
+package com.cursosdedesarrollo.app.selenium.estructurapaginacompleja;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class PaginaPrincipalPactometroV2 {
+public class PaginaPrincipalPactometro {
     private WebDriver driver;
     WebElement numSies;
     WebElement numAbst;
@@ -17,7 +11,7 @@ public class PaginaPrincipalPactometroV2 {
     WebElement noes;
 
     WebElement botonPP;
-    PaginaPrincipalPactometroV2(WebDriver driver){
+    PaginaPrincipalPactometro(WebDriver driver){
         this.driver = driver;
         navegaPagina();
         getElements();

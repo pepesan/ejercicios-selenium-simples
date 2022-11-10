@@ -1,4 +1,4 @@
-package com.cursosdedesarrollo.app.selenium.estructurapagina;
+package com.cursosdedesarrollo.app.selenium.estructurapaginacompleja;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PruebaBasica {
+public class PruebaConfigurada {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
