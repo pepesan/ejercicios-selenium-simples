@@ -14,3 +14,7 @@ mvn test -Dgroups="smoke"
 mvn test -Dgroups="integracion | aceptacion"
 ## no ejecutes este tag api
 mvn test -Dgroups="!api"
+
+# Lanzamiento de Grid
+Descarga el selenium server y lanzalo con:
+java -jar selenium-server-xxx.jar standalone
