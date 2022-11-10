@@ -1,9 +1,6 @@
-package com.cursosdedesarrollo.app.selenium;
+package com.cursosdedesarrollo.app.selenium.estructurapaginabasica;
 
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

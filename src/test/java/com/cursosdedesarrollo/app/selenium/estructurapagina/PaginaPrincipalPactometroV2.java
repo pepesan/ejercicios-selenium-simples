@@ -1,18 +1,15 @@
-package com.cursosdedesarrollo.app.selenium;
+package com.cursosdedesarrollo.app.selenium.estructurapagina;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class PaginaPrincipalPactometro {
+public class PaginaPrincipalPactometroV2 {
     private WebDriver driver;
-    private Map<String, Object> vars;
-    JavascriptExecutor js;
     WebElement numSies;
     WebElement numAbst;
     WebElement numNoes;
@@ -20,19 +17,10 @@ public class PaginaPrincipalPactometro {
     WebElement noes;
 
     WebElement botonPP;
-    @BeforeEach
-    public void setUp() {
-        // para windows
-        //System.setProperty("webdriver.chrome.driver","c:\\Users\\ruta\\chromedriver.exe");
-        driver = new ChromeDriver();
-        js = (JavascriptExecutor) driver;
-        vars = new HashMap<String, Object>();
+    PaginaPrincipalPactometroV2(WebDriver driver){
+        this.driver = driver;
         navegaPagina();
         getElements();
-    }
-    @AfterEach
-    public void tearDown() {
-        driver.quit();
     }
     public void navegaPagina(){
         // 1 | open | /pactometro/ |
