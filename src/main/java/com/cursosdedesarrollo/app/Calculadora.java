@@ -1,8 +1,8 @@
 package com.cursosdedesarrollo.app;
 
-class Calculadora {
+public class Calculadora {
 
-    Calculadora (){
+    public Calculadora (){
 
     }
 
