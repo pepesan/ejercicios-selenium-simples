@@ -145,9 +145,11 @@ public class PactometroCargaInicialTest {
     botonPP.click();
     // System.out.println(botonPP.getAttribute("disabled"));
     assertEquals("true", botonPP.getAttribute("disabled"));
+    assertTrue(!botonPP.isEnabled());
     driver.findElement(By.id("noes")).click();
     botonPP = driver.findElement(By.id("part-PP"));
     // System.out.println("style: " +botonPP.getAttribute("style"));
     assertEquals("display: none;", botonPP.getAttribute("style"));
+    assertTrue(!botonPP.isDisplayed());
   }
 }
