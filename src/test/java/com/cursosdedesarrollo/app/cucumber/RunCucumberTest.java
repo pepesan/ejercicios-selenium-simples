@@ -18,6 +18,6 @@ import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.cursosdedesarrollo.app")
 //@ConfigurationParameter(key = Constants.PLUGIN_PUBLISH_QUIET_PROPERTY_NAME, value = "true")
 //@ConfigurationParameter(key = Constants.FILTER_TAGS_PROPERTY_NAME, value = "@cursos or @busqueda")
-@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/cucumber-report/cucumber.html")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, junit:target/cucumber-results.xml, html:target/cucumber-report/cucumber.html")
 public class RunCucumberTest {
 }

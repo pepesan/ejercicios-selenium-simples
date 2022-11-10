@@ -20,7 +20,7 @@ public class CalculadoraStepdefs {
     }
     @When("^hago una suma de 2 y 3$")
     public void whenSuma2(){
-        this.i = this.c.add(1,1);
+        this.i = this.c.add(2,3);
     }
     @Then("^tengo un resultado de 2$")
     public void thenComprueba(){
@@ -28,8 +28,16 @@ public class CalculadoraStepdefs {
     }
     @Then("^tengo un resultado de 5$")
     public void thenComprueba2(){
-        assertEquals(2, this.i);
+        assertEquals(5, this.i);
     }
 
+    @When("suma {int} y {int}")
+    public void sumaY(int a, int b) {
+        this.i = this.c.add(a,b);
+    }
 
+    @Then("el resultado es {int}")
+    public void elResultadoEs(int c) {
+        assertEquals(c, this.i);
+    }
 }
