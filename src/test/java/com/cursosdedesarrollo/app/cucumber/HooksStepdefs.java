@@ -13,7 +13,10 @@ public class HooksStepdefs {
     Calculadora c;
     Integer i;
 
-
+    @Before
+    public void setUp(){
+        this.c = new Calculadora();
+    }
     @Given("inicio")
     public void inicio() {
         i=0;
@@ -46,10 +49,7 @@ public class HooksStepdefs {
     public static void beforeAll() {
         System.out.println("antes de todos los escenarios");
     }
-    @Before
-    public void setUp(){
-        this.c = new Calculadora();
-    }
+
     @BeforeStep
     public void doSomethingBeforeStep(Scenario scenario){
         System.out.println("antes de cada step");
