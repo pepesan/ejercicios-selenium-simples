@@ -8,6 +8,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
@@ -38,7 +45,7 @@ public class ChromeTest {
 
 
     @Test
-    public void test() {
+    public void test() throws IOException {
         // Your test code here. For example:
 
         driver.get("https://en.wikipedia.org/wiki/Main_Page");
@@ -49,6 +56,10 @@ public class ChromeTest {
 
         textToBePresentInElementLocated(By.tagName("body"),
                 "Computer software");
+        Screenshot screenshot = new AShot().takeScreenshot(driver);
+        screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
+        ImageIO.write(screenshot.getImage(), "jpg", new File(".\\screenshot\\fullimage.jpg"));
     }
+
 
 }
