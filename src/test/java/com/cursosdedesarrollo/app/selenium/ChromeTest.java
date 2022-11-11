@@ -58,7 +58,7 @@ public class ChromeTest {
                 "Computer software");
         Screenshot screenshot = new AShot().takeScreenshot(driver);
         screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
-        ImageIO.write(screenshot.getImage(), "jpg", new File(".\\screenshot\\fullimage.jpg"));
+        ImageIO.write(screenshot.getImage(), "jpg", new File(".\\target\\fullimage.jpg"));
     }
 
 

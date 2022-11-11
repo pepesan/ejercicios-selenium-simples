@@ -9,8 +9,8 @@ Feature: Calculator
     Then el resultado es <total>
 
     Examples:
-      | num1 | num2 | total |
-      | -2 | 3 | 1 |
-      | 10 | 15 | 25 |
-      | 99 | -99 | 0 |
-      | -1 | -10 | -11 |
+      | num1  | num2  | total |
+      | -2    | 3     | 1     |
+      | 10    | 15    | 25    |
+      | 99    | -99   | 0     |
+      | -1    | -10   | -11   |
