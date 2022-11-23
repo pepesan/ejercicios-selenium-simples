@@ -2,6 +2,8 @@ package com.cursosdedesarrollo.app;
 
 import org.junit.jupiter.api.*;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class FixturesTest {
     @BeforeAll
     static public void before(){
@@ -14,6 +16,7 @@ public class FixturesTest {
     @Test
     public void miTest(){
         System.out.println("test 1");
+        assertTrue(true);
     }
     @Test
     public void miTest2(){
