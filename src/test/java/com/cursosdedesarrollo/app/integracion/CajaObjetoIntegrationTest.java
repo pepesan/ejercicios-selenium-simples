@@ -26,4 +26,18 @@ public class CajaObjetoIntegrationTest {
         // y que los datos se han procesado correctamente
         assertEquals("Micadena1", c.getDatosProcesados());
     }
+    @Test
+    public void testUsoNormalObjetoSimulado(){
+        // spy tiene implementacion por defecto de métodos de la clase simulada
+        Objeto objetoSimulado = spy(new Objeto("Inicial"));
+        System.out.println(objetoSimulado.getCadena());
+        when(objetoSimulado.getCadena()).thenReturn("Otro Valor");
+        System.out.println(objetoSimulado.getCadena());
+        // mock no tiene implementación por defecto de la clase simulada
+        objetoSimulado = mock(Objeto.class);
+        objetoSimulado.setCadena("Inicial");
+        System.out.println(objetoSimulado.getCadena());
+        when(objetoSimulado.getCadena()).thenReturn("Otro Valor");
+        System.out.println(objetoSimulado.getCadena());
+    }
 }
