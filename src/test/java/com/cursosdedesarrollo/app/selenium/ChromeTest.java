@@ -51,7 +51,7 @@ public class ChromeTest {
         driver.get("https://en.wikipedia.org/wiki/Main_Page");
         By searchInput = By.id("searchInput");
         driver.findElement(searchInput).sendKeys("Software");
-        By searchButton = By.id("searchButton");
+        By searchButton = By.cssSelector("button.cdx-search-input__end-button");
         driver.findElement(searchButton).click();
 
         textToBePresentInElementLocated(By.tagName("body"),
