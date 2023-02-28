@@ -25,7 +25,7 @@ public class MyNavigationStepdefs {
     public void busco_con_texto(String criterio) {
         By searchInput = By.id("searchInput");
         driver.findElement(searchInput).sendKeys(criterio);
-        By searchButton = By.id("searchButton");
+        By searchButton = By.cssSelector("button.cdx-search-input__end-button");
         driver.findElement(searchButton).click();
     }
 
